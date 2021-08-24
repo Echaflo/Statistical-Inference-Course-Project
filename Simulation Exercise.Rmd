@@ -13,13 +13,13 @@ output:
 
 ### It consists of two parts:
 
-##### 1. A simulation exercise.
+ 1. A simulation exercise.
 
-######       will compare the exponential distribution in R with the Central Limit Theorem.
+    * will compare the exponential distribution in R with the Central Limit Theorem.
 
-##### 2. Basic inferential data analysis.
+ 2. Basic inferential data analysis.
 
-######       I will analyze (very basically) the ToothGrowth data in the R datasets package.
+    * I will analyze (very basically) the ToothGrowth data in the R datasets package.
 
 
 ### Part 1 : Simulation exercise with exponentials
@@ -49,17 +49,88 @@ var(datos)
 
 ##### From the above we can see how the sample data are distributed against the density they show, so we see the central limit theorem. 
 
-### Part 2 : basic inferential data analysis with ToothGrowth dataset
+### Part 2 : Basic inferential data analysis with ToothGrowth dataset
+
+
+#### ToothGrowth: The Effect of Vitamin C on Tooth Growth in Guinea Pigs
+
+##### Description
+
+###### The response is the length of odontoblasts (cells responsible for tooth growth) in 60 guinea pigs. Each animal received one of three dose
+###### levels of vitamin C (0.5, 1, and 2 mg/day) by one of two delivery methods, orange juice or ascorbic acid (a form of vitamin C and coded as VC).
+
+
+#### Mission
+
+0. Load library's
+
+1. Load the ToothGrowth data and perform some basic exploratory data analyses
+
+2. Provide a basic summary of the data.
+
+3. Use confidence intervals and/or hypothesis tests to compare tooth growth by Supplement and Dose. (Only use the techniques from class, even if there’s other approaches worth considering)
+
+4. State your conclusions and the assumptions needed for your conclusions.
+
+
+##### Load library's
 
 ```{r,echo = TRUE}
-
+library(data.table)
+library(datasets)
+library(ggplot2)
 ```
 
 
 
+
+##### Load the ToothGrowth data and perform some basic exploratory data analyses
+
 ```{r,echo = TRUE}
+# The Effect of Vitamin C on Tooth Growth in Guinea Pigs
+data(ToothGrowth)
+toothGrowth <- data.table(ToothGrowth) 
+setnames(toothGrowth, c('len','supp','dose'),c('Length','Supplement','Dose'))
+toothGrowth$Dose <- as.factor(toothGrowth$Dose)
+```
+##### As we see, there are 60 observations with 3 variables in this data. Here is a brief explanation of the variables: len denotes the length of the growth, supp represents the delivery (supplement) type (either VC or OJ), and dose denotes the dose in milligrams/day. We change the names of the variables to Length, Supplement, and Dose, respectively.
+
+
+#### Basic Summary of the data
+
+```{r,echo = TRUE}
+summary(toothGrowth)
+head(toothGrowth)
 ```
 
+```{r,echo = TRUE}
+g<-ggplot(ToothGrowth, aes(x=supp, y=len, color=supp)) + geom_boxplot() + facet_grid(facets = ~ dose) + labs(title="Tooth growth by supplement type and dose(mg)" , y = "length", x = "Supplement")
+g
+```
+```{r,echo = TRUE}
+
+```
+```{r,echo = TRUE}
+
+```
+```{r,echo = TRUE}
+
+```
+```{r,echo = TRUE}
+
+```
+```{r,echo = TRUE}
+
+```
+```{r,echo = TRUE}
+
+```
+```{r,echo = TRUE}
+
+```
+```{r,echo = TRUE}
+
+```
 
 
 
