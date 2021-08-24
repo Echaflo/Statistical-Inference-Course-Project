@@ -5,26 +5,65 @@ date: "23/8/2021"
 output: html_document
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+# Synopsis
+
+
+##### This report is part of Statistical Inference course from Johns Hopkins University (Coursera).
+
+### It consists of two parts:
+
+##### 1. A simulation exercise.
+
+######       will compare the exponential distribution in R with the Central Limit Theorem.
+
+##### 2. Basic inferential data analysis.
+
+######       I will analyze (very basically) the ToothGrowth data in the R datasets package.
+
+
+### Part 1 : Simulation exercise with exponentials
+
+##### Generate 175 random values from a normal distribution of mean 3 and standard deviation 2 (uses seed 113) 
+
+```{r,echo = TRUE}
+options(width=80)
+set.seed(113) 
+datos<-rnorm(175,3,2)
+head(datos)
+```
+##### Now let's see two important data such as the mean and variance of the data 
+
+```{r,echo = TRUE}
+mean(datos)
+var(datos)
+```
+##### Now let's see the histogram reflecting the distribution of the information 
+```{r,echo = TRUE}
+ hist(datos)
 ```
 
-## R Markdown
-
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
+##### Relative frequencies are represented and it is possible to make a comparison with the theoretical density function. This comparison is done by executing the following code below. 
+```{r,echo = TRUE}
+ hist(datos, freq=FALSE)
+ curve(dnorm(x,3,2),add=TRUE)
 ```
 
-## Including Plots
+##### From the above we can see how the sample data are distributed against the density they show, so we see the central limit theorem. 
 
-You can also embed plots, for example:
+### Part 2 : basic inferential data analysis with ToothGrowth dataset
 
-```{r pressure, echo=FALSE}
-plot(pressure)
+```{r,echo = TRUE}
+
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+
+```{r,echo = TRUE}
+```
+
+
+
+
+
+
+
