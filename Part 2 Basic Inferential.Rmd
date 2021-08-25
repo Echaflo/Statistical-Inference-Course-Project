@@ -1,15 +1,12 @@
 ---
-title: 'Part 2: Basic Inferential Data Analysis'
+title: 'Part 2: Basic Inferential'
 author: "echf"
 date: "23/8/2021"
 output:
+  pdf_document: default
   html_document:
     keep_md: yes
-  pdf_document: default
-
 ---
-
-
 ## Synopsis
 
 ##### This report is part of Statistical Inference course from Johns Hopkins University (Coursera).
@@ -43,7 +40,7 @@ output:
 
 ##### Load library's
 ```{r}
-options(tinytex.verbose = TRUE)
+
 echo = TRUE
 options(width=80)
 library(data.table)
@@ -66,7 +63,9 @@ toothGrowth$Dose <- as.factor(toothGrowth$Dose)
 summary(toothGrowth)
 head(toothGrowth)
 ```
-```{r}
+
+```{r, fig.align="center"}
+ ##options(tinytex.verbose = TRUE)  ## This intruction was added because it could not generate the pdf because it indicated a lack of image error. 
  g<-ggplot(toothGrowth, aes(x=Supplement, y=Length, color=Supplement)) +
     geom_boxplot() + facet_grid(facets = ~ Dose) + 
    labs(title="Tooth growth by supplement type and dose(mg)" , 
@@ -74,7 +73,7 @@ head(toothGrowth)
  g
 ```
 
-```{r fig.align="center"}
+```{r}
 # Orange juice as delivery method of Vitamin C
 oj <- subset(ToothGrowth, supp == "OJ")
 # Ascorbic acid as delivery method of Vitamin C

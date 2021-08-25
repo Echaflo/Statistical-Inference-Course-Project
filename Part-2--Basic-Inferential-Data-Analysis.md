@@ -5,8 +5,7 @@ date: "23/8/2021"
 output:
   html_document:
     keep_md: yes
-  pdf_document: default
-
+  pdf_document: default  
 ---
 
 
@@ -44,7 +43,7 @@ output:
 ##### Load library's
 
 ```r
-options(tinytex.verbose = TRUE)
+options(tinytex.verbose = TRUE)  ## This intruction was added because it could not generate the pdf because it indicated a lack of image error. 
 echo = TRUE
 options(width=80)
 library(data.table)

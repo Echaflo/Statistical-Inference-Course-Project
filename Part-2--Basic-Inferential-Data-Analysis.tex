@@ -36,7 +36,7 @@
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
 \hypersetup{
-  pdftitle={Part 2: Basic Inferential Data Analysis},
+  pdftitle={Part 2: Basic Inferential},
   pdfauthor={echf},
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
@@ -103,7 +103,7 @@
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
 
-\title{Part 2: Basic Inferential Data Analysis}
+\title{Part 2: Basic Inferential}
 \author{echf}
 \date{23/8/2021}
 
@@ -263,6 +263,7 @@ data}\label{basic-summary-of-the-data}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
+ \DocumentationTok{\#\#options(tinytex.verbose = TRUE)  \#\# This intruction was added because it could not generate the pdf because it indicated a lack of image error. }
 \NormalTok{ g}\OtherTok{\textless{}{-}}\FunctionTok{ggplot}\NormalTok{(toothGrowth, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\NormalTok{Supplement, }\AttributeTok{y=}\NormalTok{Length, }\AttributeTok{color=}\NormalTok{Supplement)) }\SpecialCharTok{+}
     \FunctionTok{geom\_boxplot}\NormalTok{() }\SpecialCharTok{+} \FunctionTok{facet\_grid}\NormalTok{(}\AttributeTok{facets =} \SpecialCharTok{\textasciitilde{}}\NormalTok{ Dose) }\SpecialCharTok{+} 
    \FunctionTok{labs}\NormalTok{(}\AttributeTok{title=}\StringTok{"Tooth growth by supplement type and dose(mg)"}\NormalTok{ , }
@@ -271,7 +272,7 @@ data}\label{basic-summary-of-the-data}}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Part-2--Basic-Inferential-Data-Analysis_files/figure-latex/unnamed-chunk-4-1.pdf}
+\begin{center}\includegraphics{Part-2--Basic-Inferential-Data-Analysis_files/figure-latex/unnamed-chunk-4-1} \end{center}
 
 \begin{Shaded}
 \begin{Highlighting}[]
