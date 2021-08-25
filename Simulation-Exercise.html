@@ -171,8 +171,8 @@ pre code {
 </div>
 
 
-<div id="synopsis" class="section level1">
-<h1>Synopsis</h1>
+<div id="synopsis" class="section level2">
+<h2>Synopsis</h2>
 <div id="this-report-is-part-of-statistical-inference-course-from-johns-hopkins-university-coursera." class="section level5">
 <h5>This report is part of Statistical Inference course from Johns Hopkins University (Coursera).</h5>
 </div>
@@ -241,7 +241,7 @@ head(datos)</code></pre>
 <li><p>Load library’s</p></li>
 <li><p>Load the ToothGrowth data and perform some basic exploratory data analyses</p></li>
 <li><p>Provide a basic summary of the data.</p></li>
-<li><p>Use confidence intervals and/or hypothesis tests to compare tooth growth by Supplement and Dose. (Only use the techniques from class, even if there’s other approaches worth considering)</p></li>
+<li><p>Use confidence intervals and/or hypothesis tests to compare tooth growth by Supplement and Dose.</p></li>
 <li><p>State your conclusions and the assumptions needed for your conclusions.</p></li>
 </ol>
 <div id="load-librarys" class="section level5">
@@ -250,20 +250,21 @@ head(datos)</code></pre>
 library(datasets)
 library(ggplot2)</code></pre>
 </div>
-<div id="load-the-toothgrowth-data-and-perform-some-basic-exploratory-data-analyses" class="section level5">
-<h5>Load the ToothGrowth data and perform some basic exploratory data analyses</h5>
+</div>
+<div id="load-the-toothgrowth-data-and-perform-some-basic-exploratory-data-analyses" class="section level4">
+<h4>Load the ToothGrowth data and perform some basic exploratory data analyses</h4>
 <pre class="r"><code># The Effect of Vitamin C on Tooth Growth in Guinea Pigs
 data(ToothGrowth)
 toothGrowth &lt;- data.table(ToothGrowth) 
 setnames(toothGrowth, c(&#39;len&#39;,&#39;supp&#39;,&#39;dose&#39;),c(&#39;Length&#39;,&#39;Supplement&#39;,&#39;Dose&#39;))
 toothGrowth$Dose &lt;- as.factor(toothGrowth$Dose)</code></pre>
-</div>
 <div id="as-we-see-there-are-60-observations-with-3-variables-in-this-data.-here-is-a-brief-explanation-of-the-variables-len-denotes-the-length-of-the-growth-supp-represents-the-delivery-supplement-type-either-vc-or-oj-and-dose-denotes-the-dose-in-milligramsday.-we-change-the-names-of-the-variables-to-length-supplement-and-dose-respectively." class="section level5">
 <h5>As we see, there are 60 observations with 3 variables in this data. Here is a brief explanation of the variables: len denotes the length of the growth, supp represents the delivery (supplement) type (either VC or OJ), and dose denotes the dose in milligrams/day. We change the names of the variables to Length, Supplement, and Dose, respectively.</h5>
 </div>
 </div>
-<div id="basic-summary-of-the-data" class="section level4">
-<h4>Basic Summary of the data</h4>
+</div>
+<div id="basic-summary-of-the-data" class="section level3">
+<h3>Basic Summary of the data</h3>
 <pre class="r"><code>summary(toothGrowth)</code></pre>
 <pre><code>##      Length      Supplement  Dose   
 ##  Min.   : 4.20   OJ:30      0.5:20  
@@ -283,6 +284,182 @@ toothGrowth$Dose &lt;- as.factor(toothGrowth$Dose)</code></pre>
 <pre class="r"><code>g&lt;-ggplot(ToothGrowth, aes(x=supp, y=len, color=supp)) + geom_boxplot() + facet_grid(facets = ~ dose) + labs(title=&quot;Tooth growth by supplement type and dose(mg)&quot; , y = &quot;length&quot;, x = &quot;Supplement&quot;)
 g</code></pre>
 <p><img src="data:image/png;base64,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" /><!-- --></p>
+<pre class="r"><code># Orange juice as delivery method of Vitamin C
+oj &lt;- subset(ToothGrowth, supp == &quot;OJ&quot;)
+# Ascorbic acid as delivery method of Vitamin C
+vc &lt;- subset(ToothGrowth, supp == &quot;VC&quot;)
+head(oj)</code></pre>
+<pre><code>##     len supp dose
+## 31 15.2   OJ  0.5
+## 32 21.5   OJ  0.5
+## 33 17.6   OJ  0.5
+## 34  9.7   OJ  0.5
+## 35 14.5   OJ  0.5
+## 36 10.0   OJ  0.5</code></pre>
+<pre class="r"><code>head(vc)</code></pre>
+<pre><code>##    len supp dose
+## 1  4.2   VC  0.5
+## 2 11.5   VC  0.5
+## 3  7.3   VC  0.5
+## 4  5.8   VC  0.5
+## 5  6.4   VC  0.5
+## 6 10.0   VC  0.5</code></pre>
+<div id="we-want-to-see-if-delivering-vitamin-c-via-orange-juice-enhances-more-tooth-growth-in-guinea-pigs-than-ascorbic-acid.-a-one-sided-hypothesis-test-will-be-conducted.-since-we-are-not-told-whether-the-variances-are-equal-or-not-we-will-assume-unequal-variances-to-be-on-the-conservative-side.-we-will-use-the-default-95-confidence-level." class="section level5">
+<h5>We want to see if delivering vitamin C via orange juice enhances more tooth growth in guinea pigs than ascorbic acid. A one-sided hypothesis test will be conducted. Since we are not told whether the variances are equal or not, we will assume unequal variances to be on the conservative side. We will use the default, 95% confidence level.</h5>
+<pre class="r"><code>t.test(oj$len, vc$len, alternative = &quot;greater&quot;, var.equal = FALSE)</code></pre>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  oj$len and vc$len
+## t = 1.9153, df = 55.309, p-value = 0.03032
+## alternative hypothesis: true difference in means is greater than 0
+## 95 percent confidence interval:
+##  0.4682687       Inf
+## sample estimates:
+## mean of x mean of y 
+##  20.66333  16.96333</code></pre>
+</div>
+<div id="the-result-shows-a-t-statistic-of-1.9153-with-55.3-degrees-of-freedom.-the-p-value-is-0.03.-the-95-confidence-interval-is-0.47-inf.-from-the-result-delivery-using-orange-juice-seems-to-be-statistically-better-than-delivery-via-ascorbic-acid-for-tooth-growth-in-guinea-pigs." class="section level5">
+<h5>The result shows a t-statistic of 1.9153 with 55.3 degrees of freedom. The P-value is 0.03. The 95% confidence interval is (0.47, inf). From the result, delivery using orange juice seems to be statistically better than delivery via ascorbic acid for tooth growth in guinea pigs.</h5>
+</div>
+<div id="if-you-switch-variables-use-alternative-less." class="section level5">
+<h5>If you switch variables, use alternative = “less”.</h5>
+<pre class="r"><code>t.test(vc$len, oj$len, alternative = &quot;less&quot;, var.equal = FALSE)</code></pre>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  vc$len and oj$len
+## t = -1.9153, df = 55.309, p-value = 0.03032
+## alternative hypothesis: true difference in means is less than 0
+## 95 percent confidence interval:
+##        -Inf -0.4682687
+## sample estimates:
+## mean of x mean of y 
+##  16.96333  20.66333</code></pre>
+</div>
+<div id="both-one-sided-hypothesis-show-the-same-p-value-and-degrees-of-freedom.-the-t-statistic-is-negative-of-the-other-and-the-confidence-interval-goes-in-the-other-direction." class="section level5">
+<h5>Both one-sided hypothesis show the same P-value and degrees of freedom. The t-statistic is negative of the other and the confidence interval goes in the other direction.</h5>
+</div>
+<div id="comparisons-of-dose" class="section level4">
+<h4>Comparisons of dose</h4>
+<div id="comparison-of-dose-0.5-and-1-0.5-vs-2-and-1-vs-2-with-t.-test-i-assume-data-are-normally-distributed" class="section level5">
+<h5>Comparison of dose 0.5 and 1, 0.5 vs 2, and 1 vs 2 with t. test (I assume data are normally distributed)</h5>
+<pre class="r"><code>dose5&lt;-subset(ToothGrowth, ToothGrowth$dose == 0.5)
+dose1&lt;-subset(ToothGrowth, ToothGrowth$dose == 1)
+dose2&lt;-subset(ToothGrowth, ToothGrowth$dose == 2)
+
+head(dose5)</code></pre>
+<pre><code>##    len supp dose
+## 1  4.2   VC  0.5
+## 2 11.5   VC  0.5
+## 3  7.3   VC  0.5
+## 4  5.8   VC  0.5
+## 5  6.4   VC  0.5
+## 6 10.0   VC  0.5</code></pre>
+<pre class="r"><code>head(dose1)</code></pre>
+<pre><code>##     len supp dose
+## 11 16.5   VC    1
+## 12 16.5   VC    1
+## 13 15.2   VC    1
+## 14 17.3   VC    1
+## 15 22.5   VC    1
+## 16 17.3   VC    1</code></pre>
+<pre class="r"><code>head(dose2)</code></pre>
+<pre><code>##     len supp dose
+## 21 23.6   VC    2
+## 22 18.5   VC    2
+## 23 33.9   VC    2
+## 24 25.5   VC    2
+## 25 26.4   VC    2
+## 26 32.5   VC    2</code></pre>
+<pre class="r"><code>##### dose 0.5 vs 1
+t.test(dose5$len,dose1$len, var.equal = T, paired = F)</code></pre>
+<pre><code>## 
+##  Two Sample t-test
+## 
+## data:  dose5$len and dose1$len
+## t = -6.4766, df = 38, p-value = 1.266e-07
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -11.983748  -6.276252
+## sample estimates:
+## mean of x mean of y 
+##    10.605    19.735</code></pre>
+<pre class="r"><code>##### dose 0.5 vs 2 
+t.test(dose5$len,dose2$len, var.equal = F, paired = F)</code></pre>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  dose5$len and dose2$len
+## t = -11.799, df = 36.883, p-value = 4.398e-14
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -18.15617 -12.83383
+## sample estimates:
+## mean of x mean of y 
+##    10.605    26.100</code></pre>
+<pre class="r"><code>#####  dose 1 vs 2&quot; 
+t.test(dose1$len,dose2$len, var.equal = F, paired = F)</code></pre>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  dose1$len and dose2$len
+## t = -4.9005, df = 37.101, p-value = 1.906e-05
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -8.996481 -3.733519
+## sample estimates:
+## mean of x mean of y 
+##    19.735    26.100</code></pre>
+</div>
+<div id="here-we-can-see-that-the-null-hypothesis-has-been-rejected-for-all-dose-comparisons.-therefore-we-can-conclude-that-dose-without-regarding-supplementation-has-an-effect-on-teeth-growth." class="section level5">
+<h5>Here we can see that the null hypothesis has been rejected for all dose comparisons. Therefore we can conclude that dose, without regarding supplementation, has an effect on teeth growth.</h5>
+</div>
+</div>
+<div id="calculating-confidence-interval" class="section level4">
+<h4>Calculating Confidence Interval</h4>
+<div id="to-calculate-the-confidence-interval-only-append-conf.int-after-the-t.test-function.-there-is-no-need-to-enter-mu-as-mu-is-not-part-of-the-confidence-interval-computation.-if-no-confidence-level-is-specified-r-defaults-to-95." class="section level5">
+<h5>To calculate the confidence interval only, append $conf.int after the t.test( ) function. There is no need to enter mu as mu is not part of the confidence interval computation. If no confidence level is specified, R defaults to 95%.</h5>
+<pre class="r"><code># Vitamin C delivery via orange juice at 2 ml/day
+oj_two &lt;- subset(ToothGrowth, ToothGrowth$supp == &quot;OJ&quot; &amp; ToothGrowth$dose == &quot;2&quot;)
+head(oj_two)</code></pre>
+<pre><code>##     len supp dose
+## 51 25.5   OJ    2
+## 52 26.4   OJ    2
+## 53 22.4   OJ    2
+## 54 24.5   OJ    2
+## 55 24.8   OJ    2
+## 56 30.9   OJ    2</code></pre>
+<pre class="r"><code># Vitamin C delivery via ascorbic acid at 2 ml/day
+vc_two &lt;- subset(ToothGrowth, ToothGrowth$supp == &quot;VC&quot; &amp; ToothGrowth$dose == &quot;2&quot;)
+head(vc_two)</code></pre>
+<pre><code>##     len supp dose
+## 21 23.6   VC    2
+## 22 18.5   VC    2
+## 23 33.9   VC    2
+## 24 25.5   VC    2
+## 25 26.4   VC    2
+## 26 32.5   VC    2</code></pre>
+<pre class="r"><code># Default is 95% confidence level
+t.test(oj_two$len, vc_two$len, var.equal = FALSE)$conf.int</code></pre>
+<pre><code>## [1] -3.79807  3.63807
+## attr(,&quot;conf.level&quot;)
+## [1] 0.95</code></pre>
+<pre class="r"><code># To calculate 99% confidence level
+t.test(oj_two$len, vc_two$len, var.equal = FALSE, conf.level = 0.99)$conf.int</code></pre>
+<pre><code>## [1] -5.239603  5.079603
+## attr(,&quot;conf.level&quot;)
+## [1] 0.99</code></pre>
+</div>
+</div>
+<div id="conclusions" class="section level4">
+<h4>Conclusions</h4>
+<div id="the-conclusion-is-when-the-dose-is-0.5-or-1.0-there-is-a-difference-between-the-teeth-growth-after-taking-oj-and-vc-while-when-the-dose-is-2.0-there-is-no-difference-between-the-teeth-growth-after-taking-oj-and-vc.-the-assumption-needed-is-we-first-assumed-the-whole-population-is-normally-distributed-then-we-assumed-the-population-is-normally-distributed-under-each-dose." class="section level5">
+<h5>The conclusion is when the dose is 0.5 or 1.0 there is a difference between the teeth growth after taking OJ and VC, while when the dose is 2.0, there is no difference between the teeth growth after taking OJ and VC. The assumption needed is we first assumed the whole population is normally distributed, then we assumed the population is normally distributed under each dose.</h5>
+</div>
+<div id="section" class="section level5">
+<h5>——–</h5>
+</div>
 </div>
 </div>
 </div>
