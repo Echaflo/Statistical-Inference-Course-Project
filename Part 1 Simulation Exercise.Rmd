@@ -1,0 +1,49 @@
+---
+title: 'Part 1: Simulation Exercise'
+author: "echf"
+date: "23/8/2021"
+output:
+  pdf_document: default
+  html_document:
+    keep_md: yes
+---
+## Synopsis
+
+##### This report is part of Statistical Inference course from Johns Hopkins University (Coursera).
+### It consists of two parts:
+
+ 1. A simulation exercise.
+    * will compare the exponential distribution in R with the Central Limit Theorem.
+ 2. Basic inferential data analysis.
+    * I will analyze (very basically) the ToothGrowth data in the R datasets package.
+
+## Part 1 : Simulation exercise with exponentials
+
+##### Generate 175 random values from a normal distribution of mean 3 and standard deviation 2 (uses seed 113) 
+```{r}
+echo = TRUE
+options(width=80)
+set.seed(113) 
+datos<-rnorm(175,3,2)
+head(datos)
+```
+##### Now let's see two important data such as the mean and variance of the data 
+```{r}
+mean(datos)
+var(datos)
+```
+##### Now let's see the histogram reflecting the distribution of the information 
+```{r fig.align="center"}
+hist(datos)
+```
+##### Relative frequencies are represented and it is possible to make a comparison with the theoretical density function. This comparison is done by executing the following code below. 
+```{r fig.align="center"}
+hist(datos, freq=FALSE)
+curve(dnorm(x,3,2),add=TRUE)
+```
+#### Conclusions
+
+
+##### It tells us that by taking a random sample of size sufficiently high, the distribution of the mean of said sample and of other statistics such as the median can be approximated by a normal distribution, whose mean value can coincide with the value of the parameter we are trying to estimate, that is why we see how the data is in the histogram and then we project a curve to compare how the behavior and the density of the information should be. 
+
+##### ----------
