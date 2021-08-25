@@ -87,7 +87,8 @@ head(toothGrowth)
 ```{r fig.align="center"}
 g<-ggplot(ToothGrowth, aes(x=supp, y=len, color=supp)) +
    geom_boxplot() + facet_grid(facets = ~ dose) + 
-  labs(title="Tooth growth by supplement type and dose(mg)" , y = "length", x = "Supplement")
+  labs(title="Tooth growth by supplement type and dose(mg)" , 
+       y = "length", x = "Supplement")
 g
 ```
 ```{r}
